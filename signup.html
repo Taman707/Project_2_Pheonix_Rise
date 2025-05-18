@@ -81,50 +81,32 @@
   </div>
 
   <script>
+    const API_BASE_URL = 'https://project-2-pheonix-rise.onrender.com'; // Replace with your deployed backend URL
+
     document.getElementById('signupForm').addEventListener('submit', async function(e) {
       e.preventDefault();
-
-      console.log("Form Submitted");  // Debugging: Ensure form submission is triggered
-
-      const username = document.getElementById("username").value;
+// for commiting this
+      const name = document.getElementById("username").value;
       const email = document.getElementById("email").value;
       const phone = document.getElementById("phone").value;
       const password = document.getElementById("password").value;
 
-      console.log("Username:", username);  // Debugging: Log username
-      console.log("Email:", email);  // Debugging: Log email
-      console.log("Phone:", phone);  // Debugging: Log phone
-      console.log("Password:", password);  // Debugging: Log password
-
-      const phoneRegex = /^[0-9]{10}$/;
-      if (!phoneRegex.test(phone)) {
-        alert("Please enter a valid 10-digit phone number.");
-        return;
-      }
-
       try {
-        // Send request to the backend
-        const res = await fetch("http://localhost:5000/api/register", {
+        const res = await fetch(`${API_BASE_URL}/api/register`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name: username, email, phone, password })
+          body: JSON.stringify({ name, email, phone, password })
         });
 
-        console.log("Response Status:", res.status);  // Debugging: Check response status
         const data = await res.json();
-        console.log("Response Data:", data);  // Debugging: Check the response data
-
-        alert(data.message);  // Show success or error message
+        alert(data.message);
 
         if (res.ok) {
-          console.log("Redirecting to home page...");  // Debugging: Check if redirection occurs
-          window.location.href = 'home.html';  // Redirect to home page if successful
-        } else {
-          alert("Sign up failed. Please try again.");
+          window.location.href = 'home.html';
         }
       } catch (err) {
-        console.error("Sign-up failed", err);  // Log the error if the request fails
-        alert("An error occurred. Please check the console for more details.");
+        console.error("Signup failed", err);
+        alert("Unable to connect to the server. Please try again later.");
       }
     });
   </script>
