@@ -1,0 +1,8 @@
+# Node modules (large & regenerable)
+node_modules/
+
+# Local environment variables
+.env
+
+# Optional: logs or other local files
+*.log

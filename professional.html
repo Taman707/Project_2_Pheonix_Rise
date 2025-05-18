@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Therapists - Phoenix Rise</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <style>
+    body {
+      background-color: #f3faff;
+      font-family: 'Segoe UI', sans-serif;
+      color: #00334e;
+    }
+    header {
+      background-color: #b2ebf2;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    header h1 {
+      font-weight: 700;
+      color: #0077b6;
+    }
+    .intro {
+      text-align: center;
+      margin: 40px auto;
+      max-width: 800px;
+    }
+    .card-section {
+      padding: 50px 20px;
+      background: #e3f2fd;
+    }
+    .card-section h3 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #0077b6;
+    }
+    .filter-bar {
+      max-width: 900px;
+      margin: 0 auto 30px;
+      text-align: right;
+    }
+    .filter-bar select {
+      width: 200px;
+      border-radius: 10px;
+    }
+    .therapist-card {
+      background: white;
+      border: none;
+      border-radius: 12px;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s;
+    }
+    .therapist-card:hover {
+      transform: translateY(-5px);
+    }
+    .therapist-card img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Meet Our Trusted Therapists</h1>
+    <p>Find a professional that understands your path to healing.</p>
+  </header>
+
+  <section class="intro">
+  <h2 class="mb-3">Our Renowned Professionals</h2>
+  <p class="lead">Phoenix Rise is proud to be partnered with a distinguished panel of licensed therapists and wellness professionals across India. Their commitment to emotional well-being, compassion-driven care, and specialized guidance ensures you always receive support that resonates with your unique needs.</p>
+</section>
+
+<section class="container my-5">
+  <h4 class="text-center mb-4">🌟 Therapist Spotlight</h4>
+  <div class="row justify-content-center">
+    <div class="col-md-5 mb-4">
+      <div class="p-4 rounded shadow-sm bg-white text-center">
+        <img src="https://randomuser.me/api/portraits/women/60.jpg" alt="Dr. Meera Kapoor" class="rounded-circle mb-3" width="100">
+        <h6 class="fw-bold">Dr. Meera Kapoor</h6>
+        <p class="text-muted">🏆 Therapist of the Month (March)</p>
+        <p>Recognized for her outstanding support to survivors of trauma and PTSD with over 98% positive feedback from clients this month.</p>
+      </div>
+    </div>
+    <div class="col-md-5 mb-4">
+      <div class="p-4 rounded shadow-sm bg-white text-center">
+        <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Dr. Rishi Sharma" class="rounded-circle mb-3" width="100">
+        <h6 class="fw-bold">Dr. Rishi Sharma</h6>
+        <p class="text-muted">🌟 Community Favorite</p>
+        <p>Appreciated for his empathetic approach in treating depression and emotional fatigue, and for conducting multiple awareness webinars.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="card-section">
+    <div class="filter-bar">
+      <label for="filter">Filter by Specialization:</label>
+      <select id="filter" onchange="filterTherapists()">
+        <option value="all">All</option>
+        <option value="anxiety">Anxiety</option>
+        <option value="depression">Depression</option>
+        <option value="trauma">Trauma Recovery</option>
+        <option value="cbt">CBT</option>
+      </select>
+    </div>
+
+    <h3>Book a Session</h3>
+    <div class="container">
+      <div class="row g-4" id="therapistCards">
+        <div class="col-md-4 therapist-box" data-specialization="anxiety">
+          <div class="therapist-card">
+            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="">
+            <h6>Dr. Anjali Rao</h6>
+            <p>Anxiety, Mindfulness</p>
+            <button class="btn btn-primary btn-sm mt-2" onclick="openBookingForm('Dr. Anjali Rao')">Book Appointment</button>
+          </div>
+        </div>
+        <div class="col-md-4 therapist-box" data-specialization="depression">
+          <div class="therapist-card">
+            <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="">
+            <h6>Dr. Rishi Sharma</h6>
+            <p>Depression, Emotional Coaching</p>
+            <button class="btn btn-primary btn-sm mt-2" onclick="openBookingForm('Dr. Rishi Sharma')">Book Appointment</button>
+          </div>
+        </div>
+        <div class="col-md-4 therapist-box" data-specialization="cbt">
+          <div class="therapist-card">
+            <img src="https://randomuser.me/api/portraits/women/88.jpg" alt="">
+            <h6>Ms. Tanya Desai</h6>
+            <p>CBT, Self-Esteem Building</p>
+            <button class="btn btn-primary btn-sm mt-2" onclick="openBookingForm('Ms. Tanya Desai')">Book Appointment</button>
+          </div>
+        </div>
+        <div class="col-md-4 therapist-box" data-specialization="trauma">
+          <div class="therapist-card">
+            <img src="https://randomuser.me/api/portraits/men/59.jpg" alt="">
+            <h6>Dr. Sameer Malhotra</h6>
+            <p>Trauma Recovery, Grief Counseling</p>
+            <button class="btn btn-primary btn-sm mt-2" onclick="openBookingForm('Dr. Sameer Malhotra')">Book Appointment</button>
+          </div>
+        </div>
+        <div class="col-md-4 therapist-box" data-specialization="ptsd">
+          <div class="therapist-card">
+            <img src="https://randomuser.me/api/portraits/women/60.jpg" alt="">
+            <h6>Dr. Meera Kapoor</h6>
+            <p>PTSD, Crisis Management</p>
+            <button class="btn btn-primary btn-sm mt-2" onclick="openBookingForm('Dr. Meera Kapoor')">Book Appointment</button>
+          </div>
+        </div>
+        <div class="col-md-4 therapist-box" data-specialization="child">
+          <div class="therapist-card">
+            <img src="https://randomuser.me/api/portraits/men/66.jpg" alt="">
+            <h6>Mr. Rahul Sen</h6>
+            <p>Child Counseling, Developmental Therapy</p>
+            <button class="btn btn-primary btn-sm mt-2" onclick="openBookingForm('Mr. Rahul Sen')">Book Appointment</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Modal -->
+  <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="bookingModalLabel">Book Appointment</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="therapistName" class="form-label">Therapist</label>
+              <input type="text" class="form-control" id="therapistName" readonly>
+            </div>
+            <div class="mb-3">
+              <label for="userName" class="form-label">Your Name</label>
+              <input type="text" class="form-control" id="userName" required>
+            </div>
+            <div class="mb-3">
+              <label for="userEmail" class="form-label">Email</label>
+              <input type="email" class="form-control" id="userEmail" required>
+            </div>
+            <div class="mb-3">
+              <label for="appointmentDate" class="form-label">Preferred Date</label>
+              <input type="date" class="form-control" id="appointmentDate" required>
+            </div>
+            <button type="submit" class="btn btn-success">Confirm Appointment</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function filterTherapists() {
+      const filterValue = document.getElementById("filter").value;
+      const therapistBoxes = document.querySelectorAll(".therapist-box");
+      therapistBoxes.forEach(box => {
+        const specialization = box.getAttribute("data-specialization");
+        if (filterValue === "all" || specialization === filterValue) {
+          box.style.display = "block";
+        } else {
+          box.style.display = "none";
+        }
+      });
+    }
+
+    function openBookingForm(therapist) {
+      document.getElementById('therapistName').value = therapist;
+      const modal = new bootstrap.Modal(document.getElementById('bookingModal'));
+      modal.show();
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

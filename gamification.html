@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Progress Tracker - Phoenix Rise</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      background: #f0f8ff;
+      font-family: 'Segoe UI', sans-serif;
+      color: #00334e;
+    }
+    header {
+      background: #b2ebf2;
+      padding: 30px;
+      text-align: center;
+    }
+    header h1 {
+      color: #0077b6;
+      font-weight: 700;
+    }
+    .points-meter {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: white;
+      border: 2px solid #00bcd4;
+      border-radius: 10px;
+      padding: 10px 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      font-weight: 600;
+      color: #0077b6;
+    }
+    .section-title {
+      text-align: center;
+      margin: 40px 0 20px;
+      color: #005f73;
+    }
+    .badge-box, .task-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .badge {
+      background: #ffffff;
+      border: 2px solid #00bcd4;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      width: 150px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .exercise-card {
+      background: #ffffff;
+      border-left: 6px solid #00bcd4;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 10px 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Your Growth Journey</h1>
+    <div class="points-meter">
+      🌟 Points Earned: <span id="points">120</span>
+    </div>
+  </header>
+
+  <section class="container mt-5">
+    <h3 class="section-title">📈 Weekly Mood Tracker</h3>
+    <canvas id="moodChart" height="100"></canvas>
+  </section>
+
+  <section class="container mt-5">
+  <h3 class="section-title">🏅 Earned Badges</h3>
+  <div class="badge-box">
+    <div class="badge" style="font-size: 1.3rem; padding: 20px; width: 180px;">
+      🧠<br><br>
+      <p style="font-size: 0.8rem; margin-top: 8px; color: #0077b6;"> Mindful Mastery</p>
+    </div>
+    <div class="badge" style="font-size: 1.3rem; padding: 20px; width: 180px;">
+      🔥<br><br>
+      <p style="font-size: 0.8rem; margin-top: 8px; color: #0077b6;">Consistency Hero</p>
+    </div>
+    <div class="badge" style="font-size: 1.3rem; padding: 20px; width: 180px;">
+      🤝<br><br>
+      <p style="font-size: 0.8rem; margin-top: 8px; color: #0077b6;">Supportive Spirit</p>
+    </div>
+    <div class="badge" style="font-size: 1.3rem; padding: 20px; width: 180px;">
+      🌟<br><br>
+      <p style="font-size: 0.8rem; margin-top: 8px; color: #0077b6;">Recovery Star.</p>
+    </div>
+  </div>
+</section>
+<section class="container mt-5">
+    <h3 class="section-title">📚 Badge Criteria </h3>
+    <div class="row justify-content-center">
+      <div class="col-md-10">
+        <div class="p-4 bg-white rounded shadow-sm border">
+          <ul>
+            <li><strong>🧠 Mindful Mastery:</strong> Complete 5+ mindfulness or meditation-based exercises in a week.</li><br>
+            <li><strong>🔥 Consistency Hero:</strong> Maintain a journaling streak for 7 consecutive days.</li><br>
+            <li><strong>🤝 Supportive Spirit:</strong> Post or respond in the community section 3+ times meaningfully.</li><br>
+            <li><strong>🌟 Recovery Star:</strong> Successfully complete at least 2 full sets of Daily Recovery Exercises in one week.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="container mt-5">
+    <h3 class="section-title">🏃 Daily Recovery Exercises</h3>
+    <div class="task-list flex-column">
+  <div class="exercise-card">
+    <h6 class="fw-bold">Morning Boost (Earn 15 pts)</h6>
+    <ul class="mb-0">
+      <li><input type="checkbox"> 2 km morning walk</li>
+      <li><input type="checkbox"> Drink 2L water</li>
+      <li><input type="checkbox"> 10 mindful breaths</li>
+    </ul>
+  </div>
+  <div class="exercise-card">
+    <h6 class="fw-bold">Mental Recharge (Earn 20 pts)</h6>
+    <ul class="mb-0">
+      <li><input type="checkbox"> Journal 3 thoughts</li>
+      <li><input type="checkbox"> Express gratitude</li>
+      <li><input type="checkbox"> 10 push-ups</li>
+    </ul>
+  </div>
+  <div class="exercise-card">
+    <h6 class="fw-bold">Evening Reset (Earn 10 pts)</h6>
+    <ul class="mb-0">
+      <li><input type="checkbox"> 5-min deep breathing</li>
+      <li><input type="checkbox"> Reflect on 1 positive moment</li>
+      <li><input type="checkbox"> Prepare tomorrow's to-do</li>
+    </ul>
+  </div>
+</div>
+  
+</div>
+      
+    </div>
+  </section>
+
+  <section class="container mt-5">
+  <h3 class="section-title">🎁 Redeem Your Efforts</h3>
+  <div class="row g-4 justify-content-center">
+    <div class="col-md-3">
+      <div class="p-4 bg-white rounded shadow-sm text-center border">
+        <h6>🎟️ 1-on-1 Therapy Session</h6>
+        <p class="text-muted">Cost: 100 pts</p>
+        <button class="btn btn-outline-success btn-sm">Redeem</button>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="p-4 bg-white rounded shadow-sm text-center border">
+        <h6>📱 Mindfulness App Premium</h6>
+        <p class="text-muted">Cost: 80 pts</p>
+        <button class="btn btn-outline-success btn-sm">Redeem</button>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="p-4 bg-white rounded shadow-sm text-center border">
+        <h6>📘 Guided Meditation Pack</h6>
+        <p class="text-muted">Cost: 50 pts</p>
+        <button class="btn btn-outline-success btn-sm">Redeem</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <script>
+    const ctx = document.getElementById('moodChart');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        datasets: [{
+          label: 'Mood Score (1-5)',
+          data: [3, 4, 2, 3, 4, 5, 4],
+          borderColor: '#00bcd4',
+          backgroundColor: 'rgba(0, 188, 212, 0.1)',
+          tension: 0.4
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            suggestedMax: 5
+          }
+        }
+      }
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
